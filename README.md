@@ -15,13 +15,17 @@ In this project you will detect lane lines in images using Python and OpenCV.  O
 ---
 ##1. Describe the pipeline##
 - Many steps to the pipeline (Thankfully our Eyes don't need steps to leave an accident zone).
+
 ###A. Find Edge pixels
 - To improve capture and eliminate noise, we perform below sequence of image preprocessing activities 
 1. Remove near dark pixels from image. These are masked to black. 
 2. Do Gaussian blurring of image. We used kernel-size of 3. 
 3. Detect edges by running Canny's routine on the grayscale image, and also each color channel. Combine the edge maps found. 
+
 ###B. Mask the edges to region of interest in front of the car. 
+
 ###C. Perform Hough transform and fetch lines in the edge pixels. 
+
 ###D. Combine the lines into left and right lanes
 0. Take in the detected Houghlines in masked edges-map
 1. Assign weights to lines based on their lengths 
