@@ -14,9 +14,9 @@ In this project you will detect lane lines in images using Python and OpenCV.  O
 #**Reflection**
 ---
 ##1. Describe the pipeline##
-    Many steps to the pipeline (Thankfully our Eyes don't need steps to leave an accident zone).
+Many steps to the pipeline (Thankfully our Eyes don't need steps to leave an accident zone).
 ###A. Find Edge pixels
-    To improve capture and eliminate noise, we perform below sequence of image preprocessing activities 
+To improve capture and eliminate noise, we perform below sequence of image preprocessing activities 
 1. Remove near dark pixels from image. These are masked to black. 
 2. Do Gaussian blurring of image. We used kernel-size of 3. 
 3. Detect edges by running Canny's routine on the grayscale image, and also each color channel. Combine the edge maps found. 
@@ -29,16 +29,16 @@ In this project you will detect lane lines in images using Python and OpenCV.  O
 3. Compute weighted average slope, passing-pt of lines with slope>0 (& < 0) to form rightLane (& leftLane)
 
 ##2. Identify any shortcomings
-    The final lanelines are very jerky, and in some frames outright incorrect. 
-###A. detected edges pixels seem fine with respect to the input images.
-###B. Mask seemed to be proper wrt some static input images, but it is giving many spurious edges at the top. 
-###C. Detected Lane lines are not consistently accurate. 
+The final lanelines are very jerky, and in some frames outright incorrect. 
+A. detected edges pixels seem fine with respect to the input images.
+B. Mask seemed to be proper wrt some static input images, but it is giving many spurious edges at the top. 
+C. Detected Lane lines are not consistently accurate. 
 
 ##3. Suggest possible improvements
-###A. Region of Interest Mask to be customized based on the Car and mount position of the camera.
-###B. Mask size to err towards lower size, to eliminate noise from detected edges. The final output is less sensitive to missing of some edge pixels near mask boundary, than it is to random noise in the region of interest. 
-###C. Parameters for Hough line detection to be calibrated. Most error has crept in here, and this is currently the weakest point of the pipeline. 
-###D. While combining lines, computation of mean slope to be best performed in angles, instead of y/x slope. 
-###E. To combine the line segments length of the lines are taken as weights. Evaluate other options like no of edge pixels, or combination of line-length and frequence for weights. 
-###F. Eliminate NaN values from computation. Write computations in such a way, that no NaN comes. Eliminating NaN by replacing with a fixed value, can extremely skew results. 
+A. Region of Interest Mask to be customized based on the Car and mount position of the camera.
+B. Mask size to err towards lower size, to eliminate noise from detected edges. The final output is less sensitive to missing of some edge pixels near mask boundary, than it is to random noise in the region of interest. 
+C. Parameters for Hough line detection to be calibrated. Most error has crept in here, and this is currently the weakest point of the pipeline. 
+D. While combining lines, computation of mean slope to be best performed in angles, instead of y/x slope. 
+E. To combine the line segments length of the lines are taken as weights. Evaluate other options like no of edge pixels, or combination of line-length and frequence for weights. 
+F. Eliminate NaN values from computation. Write computations in such a way, that no NaN comes. Eliminating NaN by replacing with a fixed value, can extremely skew results. 
 
